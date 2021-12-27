@@ -33,7 +33,7 @@ namespace MyFinalProject.BLL.Services
                     Parameters = tech.Parameters
                 };
                 db.Techs.Add(newTech);
-                UserTech userTech = new UserTech() { TechId = newTech.TechId, UserID = StaticUserAccount.Id };
+                UserTech userTech = new UserTech() { TechId = newTech.TechId, UserId = StaticUserAccount.Id };
                 db.UsersTech.Add(userTech);
                 db.SaveChanges();
             }
@@ -56,7 +56,11 @@ namespace MyFinalProject.BLL.Services
                 };
                 db.Techs.Add(newTech);
                 db.SaveChanges();
-                UserTech userTech = new UserTech() { TechId = newTech.TechId, UserID = StaticUserAccount.Id };
+                UserTech userTech = new UserTech() 
+                { 
+                    TechId = newTech.TechId, 
+                    UserId = StaticUserAccount.Id 
+                };
                 db.UsersTech.Add(userTech);
             }
             catch (Exception ex)
@@ -64,12 +68,72 @@ namespace MyFinalProject.BLL.Services
                 throw ex;
             }
         }
-        public void AddTechToUser(Tech tech) //!!!
+        public TechVM GetTech(string techId)
         {
             try
             {
-               db.Techs.Add(tech);
+                var techDb = db.Techs.Find(new Guid(techId));
+                if (techDb == null)
+                {
+                    throw new Exception("Такой техники не существует.");
+                }
+                var tech = new TechVM(techDb);
+                return tech;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void AddTechToUser(Tech tech)
+        {
+            try
+            {
+                UserTech userTech = new UserTech()
+                {
+                    TechId = tech.TechId,
+                    UserId = StaticUserAccount.Id
+                };
+               db.UsersTech.Add(userTech);
                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<TechAllListVM> GetAllTechByUser()
+        {
+            try
+            {
+                var techsFromDb = db.Techs;
+                var techList = new List<TechAllListVM>();
+
+                foreach (var techDb in techsFromDb)
+                {
+                    techList.Add(new TechAllListVM(techDb));
+                }
+
+                return techList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<TechUserListVM> GetListTechByUser()
+        {
+            try
+            {
+                var techsFromDb = db.UsersTech.Where(n => n.UserId == StaticUserAccount.Id);
+                var techList = new List<TechUserListVM>();
+
+                foreach (var techDb in techsFromDb)
+                {
+                    //techList.Add(new TechUserListVM(techDb));
+                }
+
+                return techList;
             }
             catch (Exception ex)
             {

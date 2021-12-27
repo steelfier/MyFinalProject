@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace MyFinalProject.BLL.ViewModels.TechVM
 {
-    public class TechUserListVM
+    public class TechAllListVM
     {
-        public Guid Id { get; set; }
+        public Guid TechId { get; set; }
         public string Name { get; set; }
-        public TechUserListVM(Tech tech)
+
+        public TechAllListVM(Tech tech)
         {
-            //Id = tech.UserTech,
+            TechId = tech.TechId;
             Name = tech.Name;
         }
     }

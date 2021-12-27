@@ -189,7 +189,8 @@ public class ConsoleHelper
                 case "1":
                     {
                         Console.Write("Введите ID техники: ");
-                        GetNotePage(Console.ReadLine());
+                        GetTech(Console.ReadLine());
+                        AddTechToUser()
                         break;
                     }
                 case "2":

@@ -64,13 +64,12 @@
     <Compile Include="ViewModels\RemoteVM\CreateRemoteVM.cs" />
     <Compile Include="ViewModels\RemoteVM\RemoteButtonVM.cs" />
     <Compile Include="ViewModels\RemoteVM\RemoteVM.cs" />
-    <Compile Include="ViewModels\TechVM\TechAllListVM.cs" />
+    <Compile Include="ViewModels\TechVM\TechListVM.cs" />
     <Compile Include="ViewModels\TechVM\TechUserListVM.cs" />
     <Compile Include="ViewModels\TechVM\CreateTechVM.cs" />
     <Compile Include="ViewModels\TechVM\TechVM.cs" />
     <Compile Include="ViewModels\UserVM\AccountVM.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MyFinalProject.DAL\MyFinalProject.DAL.csproj">
       <Project>{41a07e0d-2e3a-44eb-906e-9d1e9046441a}</Project>

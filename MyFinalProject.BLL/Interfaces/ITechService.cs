@@ -10,6 +10,7 @@ namespace MyFinalProject.BLL.Interfaces
     public interface ITechService
     {
         void CreateTech(CreateTechVM tech);
+        //void GetTech(TechVM tech);
         //List<NoteListItemVM> GetAllNotesByUser();
         //NoteVM GetNote(string noteId);
     }

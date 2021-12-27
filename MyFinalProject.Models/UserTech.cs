@@ -11,7 +11,7 @@ namespace MyFinalProject.Models
     {
         [Key]
         public Guid UserTechId { get; set; } = Guid.NewGuid();
-        public Guid UserID { get; set; }
+        public Guid UserId { get; set; }
         public virtual User User { get; set; }
         public Guid TechId { get; set; }
         public virtual Tech Tech { get; set; }
